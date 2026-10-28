@@ -1,0 +1,10 @@
+---
+- name: Afficher une page de maintenance
+  hosts: web
+  become: true
+  tasks:
+  - name: Remplacer la page d'accueil
+    ansible.builtin.copy:
+      dest: "/var/www/{{ site_name }}/index.html"
+      content: "<h1>Site en maintenance</h1>\n"
+      mode: "0644"

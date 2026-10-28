@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><title>{{ site_name }}</title></head>
+<body>
+<h1>{{ message | default('Bonjour depuis AAP') }}</h1>
+<p>Serveur : {{ ansible_facts['hostname'] }}, port {{ nginx_port }}</p>
+<p>Environnement : {{ environnement | default('non précisé') }}</p>
+</body>
+</html>

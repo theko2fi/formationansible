@@ -1,0 +1,13 @@
+- name: Vérifier que le site répond
+  hosts: web
+  gather_facts: false
+  tasks:
+    - name: Interroger la page d'accueil depuis le serveur
+      ansible.builtin.uri:
+        url: "http://localhost:{{ nginx_port }}/"
+        return_content: true
+      register: page
+    - name: Vérifier le contenu
+      ansible.builtin.assert:
+        that: "'Serveur' in page.content"
+      fail_msg: "La page ne contient pas le texte attendu"
