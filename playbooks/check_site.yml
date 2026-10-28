@@ -1,6 +1,6 @@
 - name: Vérifier que le site répond
   hosts: web
-  gather_facts: false
+  gather_facts: true
   tasks:
     - name: Interroger la page d'accueil depuis le serveur
       ansible.builtin.uri:
