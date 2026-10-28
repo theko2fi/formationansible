@@ -4,10 +4,10 @@
   tasks:
     - name: Interroger la page d'accueil depuis le serveur
       ansible.builtin.uri:
-        url: "http://localhost:{{ nginx_port }}/"
+        url: "http://{{ ansible_default_ipv4.address }}:{{ nginx_port }}/"
         return_content: true
       register: page
     - name: Vérifier le contenu
       ansible.builtin.assert:
         that: "'Serveur' in page.content"
-      fail_msg: "La page ne contient pas le texte attendu"
+        fail_msg: "La page ne contient pas le texte attendu"
